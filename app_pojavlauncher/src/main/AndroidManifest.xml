@@ -34,6 +34,7 @@
         android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MissingStorageActivity"
             android:exported="false" />
@@ -41,6 +42,23 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="ratio_float" />
+
+        <!-- بخش جدید: اکتیویتی ورود مایکروسافت با قابلیت Deep Link -->
+        <activity
+            android:name=".authenticator.MicrosoftLoginActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="login.live.com"
+                    android:path="/oauth20_desktop.srf" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".TestStorageActivity"
